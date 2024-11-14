@@ -14,6 +14,7 @@ class ControladorJuego:
             if len(self.modelo.cartas_volteadas) == 2:
                 es_par = self.modelo.es_par()
                 if es_par is False:
+                    # Esperar un segundo antes de ocultar las cartas que no son pareja
                     self.vista.botones[indice].after(1000, self.ocultar_cartas_no_pareja)
                 elif self.modelo.todas_encontradas():
                     self.vista.mostrar_mensaje_ganador()
@@ -25,3 +26,7 @@ class ControladorJuego:
             self.vista.ocultar_valor_carta(indice)
         self.modelo.cartas_volteadas.clear()
 
+    def reiniciar_juego(self):
+        """Reinicia el juego reseteando el modelo y la vista."""
+        self.modelo.reiniciar()
+        self.vista.reiniciar_tablero()
