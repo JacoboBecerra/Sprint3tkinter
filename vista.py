@@ -17,3 +17,11 @@ class VistaJuego:
             boton = tk.Button(root, text="?", width=6, height=3)
             boton.grid(row=i // num_pares, column=i % num_pares)
             self.botones.append(boton)
+
+    def reiniciar_tablero(self):
+        """Reinicia el tablero ocultando todas las cartas y eliminando el mensaje de ganador."""
+        for boton in self.botones:
+            boton.config(text="?", state="normal")
+        if self.mensaje_ganador:
+            self.mensaje_ganador.destroy()
+            self.mensaje_ganador = None
